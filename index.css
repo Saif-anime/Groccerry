@@ -1,0 +1,78 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.container{
+    /* border: 1px solid red; */
+    background-color: aqua;
+    width: 50%;
+    height: 500px;
+    margin: auto;
+    padding: 20px;
+}
+h1{
+    text-align: center;
+}
+.add{
+    display: flex;
+    margin: 20px 0;
+}
+input{
+    width: 100%;
+    padding: 5px;
+}
+.add .addItem{
+    padding: 7px;
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+.row{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin: 20px 0px;
+    /* justify-content: space-between; */
+}
+span{
+    font-family: cursive ;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.row h3{
+    font-family: cursive ;
+    font-size: 20px;
+}
+
+.update{
+    padding: 7px;
+    color: white;
+    border: none;
+    background-color: green;
+    margin-left: 30rem;
+}
+.delete{
+       margin: 0 10px;
+    padding: 7px;
+    color: white;
+    border: none;
+    background-color: red;
+}
+.clear{
+    border: none;
+    background-color: transparent;
+    color: red;
+    margin-top: 20px;
+    
+}
+button{
+    cursor: pointer;
+}
+.updatebtn{
+    background-color: green;
+    padding: 7px;
+    border: none;
+    color: white;
+}

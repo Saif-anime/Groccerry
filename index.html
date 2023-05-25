@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groccery List</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Groccery List 😊</h1>
+        <div class="add">
+            <input type="text" placeholder="e.g. eggs">
+            <button class="addItem">Add Item</button>
+        </div>
+        <div class="Items">
+          
+
+        </div>
+        <!-- clear the items  -->
+        <button class="clear">Clear All Items</button>
+    </div>
+</body>
+<script>
+var button = document.querySelector('.addItem')
+
+// check localstorage 
+
+if(localStorage.getItem('Items') == null){
+    var Item = [];
+}else{
+    var Item = JSON.parse(localStorage.getItem('Items'));
+}
+
+button.addEventListener('click', ()=>{
+    var val = document.querySelector('input');
+    Item.push(val.value)
+    localStorage.setItem('Items',JSON.stringify(Item));
+    adding();
+})
+
+
+
+function adding(){
+
+    var Items_div = document.querySelector('.Items');
+    var addItem_div = Item.map((e, i)=>{
+        // console.log(e);
+        return` <div class="row">
+                    <span>${i}</span>
+                    <h3>${e}</h3>
+                    <button class="update" onclick= update(${i})>Update</button>
+                    <button class="delete" onclick=deleteItem(${i})>Delete</button>
+                </div>`;
+        
+    }).join(' ')
+    
+    // console.log(Item);
+    Items_div.innerHTML = addItem_div;
+}
+
+adding();
+
+
+// delete here 
+
+
+function deleteItem(i){
+    alert(`delete Item No ${i}`)
+    Item.splice(i, 1)
+    localStorage.setItem('Items',JSON.stringify(Item));
+    adding();
+}
+
+
+
+// update here 
+function updatation(){
+    button.classList.add("addItem")
+    button.innerHTML = 'Add Item';
+button.classList.remove('updatebtn')
+}
+
+function update(i){
+    document.querySelector('input').value = Item[i];
+    button.classList.remove("addItem")
+    button.classList.add('updatebtn')
+    button.innerHTML = 'Update Item';
+
+    
+    
+    
+    document.querySelector(".updatebtn").addEventListener('click', ()=>{
+        var v = document.querySelector('input').value;
+        Item[i] = v;
+        localStorage.setItem('Items',JSON.stringify(Item));
+        adding();
+        updatation();
+    })
+}
+
+
+</script>
+</html>
